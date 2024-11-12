@@ -9,9 +9,20 @@ server - Accepts input from UI, finds the document with the greatest similarity 
 database - Contains the context corpus and all elements needed to calculate similarity. 
 
 ## Requirements 
-  - Python
+  - Docker
+  - Python (local installation only)
 
-## Installation 
+## Docker Installation
+
+To initialise and start the project using docker navigate to the project root directory and enter the following command:
+
+`docker compose up -d`
+
+To stop the project from running and remove any volumes, navigate to the project root directory and enter the following command:
+
+`docker compose down -v`
+
+## Local installation (without docker) 
 
 ### UI 
 
@@ -49,7 +60,7 @@ The purpose of the system is to take a user query, process it to add context, se
 
 example: What film should I watch? 
 
-`curl -i http://localhost:5000/query?What%20film%20should%20I%20watch`
+`curl -i http://localhost:8000/query?What%20film%20should%20I%20watch`
 
 
 ### Add a document to the system 
@@ -58,11 +69,11 @@ To add a document to the system the request should be formatted in JSON
 
 example 1: films
 
-`curl -X POST http://localhost:5000/add-document -d '{"name": "films", "contents": "Great films to watch are Star Wars: Return of the Jedi, Avatar and Mortal Engines."}'`
+`curl -X POST http://localhost:8000/add-document -d '{"name": "films", "contents": "Great films to watch are Star Wars: Return of the Jedi, Avatar and Mortal Engines."}'`
 
 example 2: sports
 
-`curl -X POST http://localhost:5000/add-document -d '{"name": "sports", "contents": "Some sports include: Horse Riding, Rugby, Basketball and Ice Hockey."}'`
+`curl -X POST http://localhost:8000/add-document -d '{"name": "sports", "contents": "Some sports include: Horse Riding, Rugby, Basketball and Ice Hockey."}'`
 
 
 
